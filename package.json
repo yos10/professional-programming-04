@@ -12,7 +12,10 @@
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
-    "pug": "2.0.0-beta11"
+    "pg": "8.5.1",
+    "pg-hstore": "2.3.3",
+    "pug": "2.0.0-beta11",
+    "sequelize": "6.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
