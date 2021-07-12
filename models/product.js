@@ -6,7 +6,7 @@ const Product = sequelize.define(
   'product',
   {
     productId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       primaryKey: true,
       allowNull: false,
     },
@@ -28,6 +28,10 @@ const Product = sequelize.define(
     },
     salesDate: {
       type: DataTypes.DATE,
+      allowNull: false,
+    },
+    statusCode: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
