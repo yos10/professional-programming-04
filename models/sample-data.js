@@ -20,7 +20,7 @@ const products = [
     category: '食品・飲料',
     price: 172,
     listPrice: 206,
-    salesDate: '2001-04-03T00:00:00.000Z',
+    salesDate: '2001/04/03',
     statusCode: 1,
   },
   {
@@ -29,7 +29,7 @@ const products = [
     category: '食品・飲料',
     price: 179,
     listPrice: 206,
-    salesDate: '2005-09-18T00:00:00.000Z',
+    salesDate: '2005/09/18',
     statusCode: 0,
   },
 ];

@@ -4,8 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// モデルの読み込み
+const { sequelize } = require('./models/sequelize-loader');
+const Product = require('./models/product');
+const Status = require('./models/hannbai-status');
+
+Status.hasOne(Product, { foreignKey: 'statusCode', targetKey: 'statusCode' });
+Product.belongsTo(Status, { foreignKey: 'statusCode', targetKey: 'statusCode' });
+(async () => {
+  await sequelize.sync();
+})();
+
+// ルーター
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -20,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

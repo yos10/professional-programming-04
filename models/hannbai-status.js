@@ -7,6 +7,7 @@ const Status = sequelize.define(
   {
     statusCode: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false,
     },
     label: {
