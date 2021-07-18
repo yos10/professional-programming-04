@@ -10,5 +10,6 @@ router.get('/', function(req, res) {
 });
 
 router.get('/products', productController.getAllProducts);
+router.get('/products/:productId', productController.getProduct);
 
 module.exports = router;

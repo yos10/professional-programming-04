@@ -16,7 +16,7 @@ Product.belongsTo(Status, { foreignKey: 'statusCode', targetKey: 'statusCode' })
 })();
 
 // ルーター
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/router');
 
 var app = express();
 

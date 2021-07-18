@@ -1,15 +1,19 @@
 const statuses = [
   {
     statusCode: 0,
-    label: '販売終了',
+    label: '予約受付中',
   },
   {
     statusCode: 1,
-    label: '販売中',
+    label: '準備中',
   },
   {
     statusCode: 2,
-    label: '予約受付中',
+    label: '販売中',
+  },
+  {
+    statusCode: 3,
+    label: '販売終了',
   },
 ];
 
@@ -21,7 +25,7 @@ const products = [
     price: 172,
     listPrice: 206,
     salesDate: '2001/04/03',
-    statusCode: 1,
+    statusCode: 2,
   },
   {
     productId: '1234567890002',
@@ -30,7 +34,7 @@ const products = [
     price: 179,
     listPrice: 206,
     salesDate: '2005/09/18',
-    statusCode: 0,
+    statusCode: 3,
   },
 ];
 
