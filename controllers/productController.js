@@ -1,7 +1,7 @@
 'use strict';
 
-const Product = require('../models/product');
-const Status = require('../models/hannbai-status');
+const Product = require('../db/models/product');
+const Status = require('../db/models/hannbai-status');
 
 const getAllProducts = async (req, res) => {
   const products = await Product.findAll({

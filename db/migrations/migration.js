@@ -1,8 +1,8 @@
 'use strict';
 
-const { sequelize } = require('./sequelize-loader');
-const Product = require('./product');
-const Status = require('./hannbai-status');
+const { sequelize } = require('../models/sequelize-loader');
+const Product = require('../models/product');
+const Status = require('../models/hannbai-status');
 const { products, statuses } = require('./sample-data');
 
 (async () => {

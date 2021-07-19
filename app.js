@@ -5,9 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 // モデルの読み込み
-const { sequelize } = require('./models/sequelize-loader');
-const Product = require('./models/product');
-const Status = require('./models/hannbai-status');
+const { sequelize } = require('./db/models/sequelize-loader');
+const Product = require('./db/models/product');
+const Status = require('./db/models/hannbai-status');
 
 Status.hasOne(Product, { foreignKey: 'statusCode', targetKey: 'statusCode' });
 Product.belongsTo(Status, { foreignKey: 'statusCode', targetKey: 'statusCode' });
@@ -16,7 +16,7 @@ Product.belongsTo(Status, { foreignKey: 'statusCode', targetKey: 'statusCode' })
 })();
 
 // ルーター
-var indexRouter = require('./routes/router');
+var productRouter = require('./routes/productRouter');
 
 var app = express();
 
@@ -30,7 +30,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// ルーター
+app.use('/', productRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
