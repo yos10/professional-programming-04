@@ -2,13 +2,15 @@ extends layout
 
 block content
   div.table-container
-    table.table.is-striped.is-fullwidth
-      tr.tr
-        th.th 商品名
-        th.th ステータス
-        th.th 価格(税込み)
+    table.table.is-striped
+      thead
+        tr
+          th 商品名
+          th ステータス
+          th 価格(税込み)
+      tbody
       each product in products
-        tr.tr
-          td.td #{product.name}
-          td.td #{product.status}
-          td.td #{product.priceIncludedTax}円
+        tr
+          td #{product.name}
+          td #{product.status}
+          td #{product.priceIncludeTax}円

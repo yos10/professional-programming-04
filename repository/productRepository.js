@@ -10,6 +10,7 @@ async function findAll() {
         model: Status,
       },
     ],
+    order: [['productId', 'ASC']],
   });
 
   return products;

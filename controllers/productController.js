@@ -8,7 +8,7 @@ const getAllProducts = async (req, res) => {
     return {
       name: p.name,
       status: p.status.label,
-      priceIncludedTax: taxIncludedPrice(p.price),
+      priceIncludeTax: taxIncludedPrice(p.price),
     };
   });
 
@@ -17,14 +17,12 @@ const getAllProducts = async (req, res) => {
 
 const getIndex = async (req, res) => {
   const products = await repo.findAll();
-  const productIds = products.map(p => {
-    return p.productId
+  const productIds = products.map((p) => {
+    return p.productId;
   });
 
   res.render('index', { productIds });
 };
-
-
 
 const apiProducts = async (req, res) => {
   const products = await repo.findAll();
@@ -38,10 +36,9 @@ const apiProduct = async (req, res) => {
   res.status(200).json(product);
 };
 
-
-
 function taxIncludedPrice(price) {
-  return parseInt(price * 1.1, 10);
+  const taxRate = 0.1;
+  return parseInt(price * (1 + taxRate), 10);
 }
 
 module.exports = {
