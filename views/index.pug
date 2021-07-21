@@ -1,8 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
-  div 
-    a(href="/products") 一覧
+  h1 Welcome to Express
+  
+  ul
+    li 
+      a(href="/products") 一覧
+    each productId in productIds
+      li
+        a(href=`/api/products/${productId}`) #{productId}

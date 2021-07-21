@@ -36,6 +36,15 @@ const products = [
     salesDate: '2005/09/18',
     statusCode: 3,
   },
+  {
+    productId: '9784088825762',
+    name: 'チェンソーマン 11',
+    category: '書籍',
+    price: 435,
+    listPrice: 484,
+    salesDate: '2021/03/04',
+    statusCode: 0,
+  },
 ];
 
 module.exports = {

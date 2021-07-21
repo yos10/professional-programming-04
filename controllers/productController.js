@@ -11,8 +11,20 @@ const getAllProducts = async (req, res) => {
       priceIncludedTax: taxIncludedPrice(p.price),
     };
   });
+
   res.render('products', { products });
 };
+
+const getIndex = async (req, res) => {
+  const products = await repo.findAll();
+  const productIds = products.map(p => {
+    return p.productId
+  });
+
+  res.render('index', { productIds });
+};
+
+
 
 const apiProducts = async (req, res) => {
   const products = await repo.findAll();
@@ -26,6 +38,8 @@ const apiProduct = async (req, res) => {
   res.status(200).json(product);
 };
 
+
+
 function taxIncludedPrice(price) {
   return parseInt(price * 1.1, 10);
 }
@@ -34,5 +48,6 @@ module.exports = {
   apiProducts,
   apiProduct,
   getAllProducts,
+  getIndex,
   taxIncludedPrice,
 };

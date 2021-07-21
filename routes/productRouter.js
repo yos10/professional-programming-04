@@ -5,9 +5,7 @@ const router = express.Router();
 const productController = require('../controllers/productController');
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', productController.getIndex);
 
 router.get('/products', productController.getAllProducts);
 

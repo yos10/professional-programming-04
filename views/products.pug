@@ -1,13 +1,14 @@
 extends layout
 
 block content
-  table.table
-    tr.tr
-      th.th 商品名
-      th.th ステータス
-      th.th 価格(税込み)
-    each product in products
+  div.table-container
+    table.table.is-striped.is-fullwidth
       tr.tr
-        td.td #{product.name}
-        td.td #{product.status}
-        td.td #{product.priceIncludedTax}円
+        th.th 商品名
+        th.th ステータス
+        th.th 価格(税込み)
+      each product in products
+        tr.tr
+          td.td #{product.name}
+          td.td #{product.status}
+          td.td #{product.priceIncludedTax}円
