@@ -10,6 +10,8 @@ router.get('/', function(req, res) {
 });
 
 router.get('/products', productController.getAllProducts);
-router.get('/products/:productId', productController.getProduct);
+
+router.get('/api/products', productController.apiProducts);
+router.get('/api/products/:productId', productController.apiProduct);
 
 module.exports = router;
