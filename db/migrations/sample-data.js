@@ -19,7 +19,7 @@ const statuses = [
 
 const products = [
   {
-    productId: '1234567890001',
+    productId: 1234567890001,
     name: 'キリン 一番搾り 350ml',
     category: '食品・飲料',
     price: 172,
@@ -28,7 +28,7 @@ const products = [
     statusCode: 2,
   },
   {
-    productId: '1234567890002',
+    productId: 1234567890002,
     name: 'キリン ラガービール 350ml',
     category: '食品・飲料',
     price: 179,
@@ -37,7 +37,7 @@ const products = [
     statusCode: 3,
   },
   {
-    productId: '9784088825762',
+    productId: 9784088825762,
     name: 'チェンソーマン 11',
     category: '書籍',
     price: 435,
