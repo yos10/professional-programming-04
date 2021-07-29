@@ -53,22 +53,64 @@ async function totalItems() {
         model: Status,
       },
     ],
-    order: [['productId', 'ASC']],
   });
 
   return amount;
 }
 
+function lastPage(pager) {
+  const pages = pager.totalItems / pager.itemsPerPage;
+
+  if (pager.totalItems % pager.itemsPerPage === 0) {
+    return pages; 
+  } else {
+    return parseInt(pages) + 1;
+  }
+}
+
+function previousPage(pager) {
+  if (pager.currentPage !== 1) {
+    return pager.currentPage - 1;
+  } else {
+    return null;
+  }
+}
+
+function nextPage(pager) {
+  if (pager.currentPage !== lastPage(pager)) {
+    return pager.currentPage + 1;
+  } else {
+    return null;
+  }
+}
+
 module.exports = {
   limitedProducts,
+  totalItems,
+  lastPage,
+  previousPage,
+  nextPage,
 };
-
 
 // CLI で実行して確認
 // node sketch/pager01.js
 (async () => {
-  const x = await limitedProducts(2);
-  console.log(JSON.stringify(x, null, 2));
-  const y = await totalItems();
-  console.log(y);
+  // const x = await limitedProducts(2);
+  // console.log(JSON.stringify(x, null, 2));
+  const pager = {
+    totalItems: 101,  // await totalItems(),
+    itemsPerPage: 10,
+    currentPage: 8,
+  };
+  console.log('-------------------------------------------------------');
+  console.log(`前のページ ${previousPage(pager)}`);
+  for (let i = 1; i < lastPage(pager) + 1; i++) {
+    if (i === pager.currentPage) {
+      console.log(`${i} *`);
+    } else {
+      console.log(`${i}`);
+    }
+  }
+  console.log(`次のページ ${nextPage(pager)}`);
+  console.log(`最後のページ ${lastPage(pager)}`);
 })();

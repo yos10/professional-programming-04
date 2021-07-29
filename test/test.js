@@ -3,6 +3,7 @@
 const request = require('supertest');
 const app = require('../app');
 const { taxIncludedPrice } = require('../controllers/productController');
+const Pager = require('../sketch/pager01');
 
 describe('/api/products', () => {
   // const expected = [{"productId":"1234567890001","name":"キリン 一番搾り 350ml","category":"食品・飲料","price":172,"listPrice":206,"salesDate":"2001-04-02T15:00:00.000Z","statusCode":2,"status":{"statusCode":2,"label":"販売中"}},{"productId":"1234567890002","name":"キリン ラガービール 350ml","category":"食品・飲料","price":179,"listPrice":206,"salesDate":"2005-09-17T15:00:00.000Z","statusCode":3,"status":{"statusCode":3,"label":"販売終了"}},{"productId":"9784088825762","name":"チェンソーマン 11","category":"書籍","price":435,"listPrice":484,"salesDate":"2021-03-03T15:00:00.000Z","statusCode":0,"status":{"statusCode":0,"label":"予約受付中"}}];
@@ -51,8 +52,41 @@ describe('/api/products/:productId', () => {
   });
 });
 
-describe('taxIncludedPrice()', () => {
+describe('#taxIncludedPrice()', () => {
   test('消費税込み価格', () => {
     expect(taxIncludedPrice(172)).toBe(189);
+  });
+});
+
+describe('sketch/pager01.js', () => {
+  test('ページャー', () => {
+    const pager = {
+      totalItems: 101,
+      itemsPerPage: 10,
+      currentPage: 8,
+    };
+    expect(Pager.previousPage(pager)).toBe(7);
+    expect(Pager.nextPage(pager)).toBe(9);
+    expect(Pager.lastPage(pager)).toBe(11);
+  });
+  test('ページャー 現在のページが最初のページ', () => {
+    const pager = {
+      totalItems: 101,
+      itemsPerPage: 10,
+      currentPage: 1,
+    };
+    expect(Pager.previousPage(pager)).toBe(null);
+    expect(Pager.nextPage(pager)).toBe(2);
+    expect(Pager.lastPage(pager)).toBe(11);
+  });
+  test('ページャー 現在のページが最後のページ', () => {
+    const pager = {
+      totalItems: 101,
+      itemsPerPage: 10,
+      currentPage: 11,
+    };
+    expect(Pager.previousPage(pager)).toBe(10);
+    expect(Pager.nextPage(pager)).toBe(null);
+    expect(Pager.lastPage(pager)).toBe(11);
   });
 });
