@@ -8,7 +8,7 @@ const getAllProducts = async (req, res) => {
     return {
       name: p.name,
       status: p.status.label,
-      priceIncludeTax: taxIncludedPrice(p.price),
+      taxIncludedPrice: taxIncludedPrice(p.price),
     };
   });
 

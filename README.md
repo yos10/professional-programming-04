@@ -21,3 +21,7 @@
    ```
    yarn start
    ```
+
+## anonymous volume を一括で削除するコマンドへのリンク
+
+https://github.com/moby/moby/issues/31757#issuecomment-508583689

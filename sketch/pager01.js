@@ -31,7 +31,7 @@ Product.belongsTo(Status, { foreignKey: 'statusCode', targetKey: 'statusCode' })
  * @param {number} limits 
  * @param {number} offsets 
  */
-async function limitedProducts(limits, offsets = 0) {
+async function selectedProducts(limits, offsets = 0) {
   const products = await Product.findAll({
     include: [
       {
@@ -85,7 +85,7 @@ function nextPage(pager) {
 }
 
 module.exports = {
-  limitedProducts,
+  selectedProducts,
   totalItems,
   lastPage,
   previousPage,
@@ -95,7 +95,7 @@ module.exports = {
 // CLI で実行して確認
 // node sketch/pager01.js
 (async () => {
-  // const x = await limitedProducts(2);
+  // const x = await selectedProducts(2);
   // console.log(JSON.stringify(x, null, 2));
   const pager = {
     totalItems: 101,  // await totalItems(),
