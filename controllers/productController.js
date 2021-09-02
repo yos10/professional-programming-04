@@ -30,6 +30,12 @@ const postProduct = async (req, res) => {
   res.status(200).json(product);
 }
 
+const deleteProduct = async (req, res) => {
+  const product = await repo.destroy(req.params.productId);
+
+  res.status(200).json();
+}
+
 const apiProducts = async (req, res) => {
   const products = await repo.findAll();
 
@@ -53,5 +59,6 @@ module.exports = {
   getAllProducts,
   getIndex,
   taxIncludedPrice,
-  postProduct
+  postProduct,
+  deleteProduct
 };

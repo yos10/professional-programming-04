@@ -7,6 +7,8 @@ const productController = require('../controllers/productController');
 /* GET home page. */
 router.get('/', productController.getIndex);
 router.post('/', productController.postProduct);
+router.delete('/api/products/:productId', productController.deleteProduct);
+
 
 router.get('/products', productController.getAllProducts);
 

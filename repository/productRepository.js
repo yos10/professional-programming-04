@@ -35,8 +35,19 @@ async function create(body) {
   const product = await Product.create(body);
 }
 
+async function destroy(productId) {
+  const product = await Product.findOne({
+    where: {
+      productId: productId,
+    },
+  }).then(p => {
+    p.destroy();
+  });
+}
+
 module.exports = {
   findAll,
   findById,
   create,
+  destroy
 };

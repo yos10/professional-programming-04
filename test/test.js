@@ -91,7 +91,6 @@ describe('sketch/pager01.js', () => {
   });
 });
 
-/*
 describe('/', () => {
   test('POST のテスト', () => {
     return request(app)
@@ -107,4 +106,10 @@ describe('/', () => {
       })
   });
 });
-*/
+
+describe('delete /api/products/:productId', () => {
+  test('DELETE のテスト', () => {
+    return request(app)
+      .delete('/api/products/1234567899999')
+  });
+});
