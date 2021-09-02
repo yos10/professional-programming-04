@@ -31,7 +31,12 @@ async function findById(productId) {
   return product;
 }
 
+async function create(body) {
+  const product = await Product.create(body);
+}
+
 module.exports = {
   findAll,
   findById,
+  create,
 };

@@ -1,12 +1,16 @@
-FROM node:14.15.4
+FROM node:14-slim
 
-RUN apt-get update
-RUN apt-get install -y locales vim tmux
-RUN locale-gen ja_JP.UTF-8
-RUN localedef -f UTF-8 -i ja_JP ja_JP
+RUN apt-get update && apt-get install -y locales \
+        && locale-gen ja_JP.UTF-8 \
+        && localedef -f UTF-8 -i ja_JP ja_JP
 ENV LANG ja_JP.UTF-8
 ENV TZ Asia/Tokyo
+
+# RUN mkdir /home/node/app && chown -R node:node /home/node/app
+
+# WORKDIR /home/node/app
 WORKDIR /app
+# USER node
 COPY package.json .
-RUN yarn install
-COPY . ./
+RUN yarn install --ignore-optional && yarn cache clean
+COPY . .

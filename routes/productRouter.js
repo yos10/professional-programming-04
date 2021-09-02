@@ -6,6 +6,7 @@ const productController = require('../controllers/productController');
 
 /* GET home page. */
 router.get('/', productController.getIndex);
+router.post('/', productController.postProduct);
 
 router.get('/products', productController.getAllProducts);
 

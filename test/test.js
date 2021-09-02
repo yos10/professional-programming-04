@@ -7,7 +7,7 @@ const Pager = require('../sketch/pager01');
 
 describe('/api/products', () => {
   // const expected = [{"productId":"1234567890001","name":"キリン 一番搾り 350ml","category":"食品・飲料","price":172,"listPrice":206,"salesDate":"2001-04-02T15:00:00.000Z","statusCode":2,"status":{"statusCode":2,"label":"販売中"}},{"productId":"1234567890002","name":"キリン ラガービール 350ml","category":"食品・飲料","price":179,"listPrice":206,"salesDate":"2005-09-17T15:00:00.000Z","statusCode":3,"status":{"statusCode":3,"label":"販売終了"}},{"productId":"9784088825762","name":"チェンソーマン 11","category":"書籍","price":435,"listPrice":484,"salesDate":"2021-03-03T15:00:00.000Z","statusCode":0,"status":{"statusCode":0,"label":"予約受付中"}}];
-  
+
   test('product 一覧が表示される', () => {
     return request(app)
       .get('/api/products')
@@ -35,7 +35,7 @@ describe('/api/products', () => {
 describe('/api/products/:productId', () => {
   const productId = 1234567890001;
   // const expected = {"productId":"1234567890001","name":"キリン 一番搾り 350ml","category":"食品・飲料","price":172,"listPrice":206,"salesDate":"2001-04-02T15:00:00.000Z","statusCode":2,"status":{"statusCode":2,"label":"販売中"}};
-  
+
   test('product 単品が表示される', () => {
     return request(app)
       .get(`/api/products/${productId}`)
@@ -90,3 +90,21 @@ describe('sketch/pager01.js', () => {
     expect(Pager.lastPage(pager)).toBe(11);
   });
 });
+
+/*
+describe('/', () => {
+  test('POST のテスト', () => {
+    return request(app)
+      .post('/')
+      .send({
+        productId: 1234567899999,
+        name: 'テスト',
+        category: '食品・飲料',
+        price: 1000,
+        listPrice: 1100,
+        salesDate: '2021-04-02T15:00:00.000Z',
+        statusCode: 0
+      })
+  });
+});
+*/

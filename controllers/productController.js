@@ -24,6 +24,12 @@ const getIndex = async (req, res) => {
   res.render('index', { productIds });
 };
 
+const postProduct = async (req, res) => {
+  const product = await repo.create(req.body);
+  
+  res.status(200).json(product);
+}
+
 const apiProducts = async (req, res) => {
   const products = await repo.findAll();
 
@@ -47,4 +53,5 @@ module.exports = {
   getAllProducts,
   getIndex,
   taxIncludedPrice,
+  postProduct
 };
