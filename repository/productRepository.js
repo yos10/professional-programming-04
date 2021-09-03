@@ -31,23 +31,35 @@ async function findById(productId) {
   return product;
 }
 
-async function create(body) {
-  const product = await Product.create(body);
+async function create(reqbody) {
+  await Product.create(reqbody);
 }
 
 async function destroy(productId) {
-  const product = await Product.findOne({
+  await Product.findOne({
     where: {
       productId: productId,
     },
-  }).then(p => {
+  }).then((p) => {
     p.destroy();
   });
+}
+
+async function update(reqbody, productId) {
+  await Product.update(
+    reqbody,
+    {
+      where: {
+        productId: productId,
+      },
+    }
+  );
 }
 
 module.exports = {
   findAll,
   findById,
   create,
-  destroy
+  destroy,
+  update,
 };

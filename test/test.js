@@ -107,6 +107,22 @@ describe('/', () => {
   });
 });
 
+describe('put /api/products/:productId', () => {
+  test('PUT のテスト', () => {
+    return request(app)
+      .put('/api/products/1234567899999')
+      .send({
+        name: 'アップデートしました',
+        category: 'アップデートしました',
+        price: 8888,
+        listPrice: 9999,
+        salesDate: '2021-12-02T15:00:00.000Z',
+        statusCode: 1
+      })
+  });
+});
+
+
 describe('delete /api/products/:productId', () => {
   test('DELETE のテスト', () => {
     return request(app)

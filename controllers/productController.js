@@ -25,13 +25,19 @@ const getIndex = async (req, res) => {
 };
 
 const postProduct = async (req, res) => {
-  const product = await repo.create(req.body);
+  await repo.create(req.body);
   
-  res.status(200).json(product);
+  res.status(200).json();
 }
 
 const deleteProduct = async (req, res) => {
-  const product = await repo.destroy(req.params.productId);
+  await repo.destroy(req.params.productId);
+
+  res.status(200).json();
+}
+
+const updateProduct = async (req, res) => {
+  await repo.update(req.body, req.params.productId);
 
   res.status(200).json();
 }
@@ -60,5 +66,6 @@ module.exports = {
   getIndex,
   taxIncludedPrice,
   postProduct,
-  deleteProduct
+  deleteProduct,
+  updateProduct
 };
