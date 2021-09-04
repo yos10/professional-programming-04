@@ -3,6 +3,42 @@ extends layout
 block content
   h1.title Welcome to Express
   
+  div
+    form#form
+      div.columns
+        div.field.column.is-two-third
+          label.label productId 
+          div.control
+            input#productId(type="text" class="input" value="")
+        div.field.column.is-two-third
+          label.label productName 
+          div.control
+            input#productName(type="text" class="input" value="")
+        div.field.column
+          label.label category
+          div.control
+            input#category(type="text" class="input" value="")
+        div.field.column
+          label.label price
+          div.control
+            input#price(type="text" class="input" value="")
+        div.field.column
+          label.label listPrice
+          div.control
+            input#listPrice(type="text" class="input" value="")
+        div.field.column
+          label.label salesDate
+          div.control
+            input#salesDate(type="text" class="input" value="")
+        div.field.column
+          label.label statusCode
+          div.control
+            input#statusCode(type="text" class="input" value="")
+        div.field.column
+          label.label add
+          div.control
+            button.button Add
+
   ul
     li.mb-2
       a(href="/products") /products
@@ -11,3 +47,5 @@ block content
     each productId in productIds
       li.mb-2
         a(href=`/api/products/${productId}`) /api/products/#{productId}
+
+  script(src="/javascripts/index.js")
